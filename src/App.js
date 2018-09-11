@@ -4,9 +4,9 @@ import './style/App.css';
 import Nav from './components/Nav';
 import "./style/Common.css";
 import Page from "./components/Page";
-import data from "./components/Source"
+import data,{Source} from "./components/Source"
 
- var  TabList = [{
+ var  tabs = [{
    Name:"bing",
    NavId:"bing",
    Active:true
@@ -32,7 +32,7 @@ class App extends Component {
     return (
       <div className="App">
         <Nav></Nav>
-        <Page  ItemList={data} TabList={TabList} Iframes={Iframes}></Page>
+        <Page data={Source}></Page>
       </div>
     );
   }
