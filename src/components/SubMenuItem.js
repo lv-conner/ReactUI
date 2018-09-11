@@ -16,7 +16,7 @@ class SubMenuItem extends Component{
         return(
             <ul className={cn}>
                 {this.props.subItems.map((item,index)=>{
-                    return<li key={item.id}><a className="sub-item tab-frame" href="javascript:void(0);" url={item.url} id={item.id}>{item.id}</a></li>
+                    return<li key={item.id}><a className="sub-item tab-frame" href="javascript:void(0);" onClick={(e) => this.props.addTab(e)} url={item.url} id={item.id}>{item.id}</a></li>
                 })}
             </ul>
         )

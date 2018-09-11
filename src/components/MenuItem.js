@@ -18,7 +18,7 @@ class MenuItem extends Component{
         return(
             <li>
                 <a href="javascript:void(0);" onClick={this.ChangeState.bind(this)} className="nav-menu-item">{this.props.Item.text}<i className="fa fa-angle-right right-directive" ></i></a>
-                <SubMuneItem subItems={this.props.Item.subItems} display={this.state.display}></SubMuneItem>
+                <SubMuneItem subItems={this.props.Item.subItems} display={this.state.display} addTab = {this.props.addTab} ></SubMuneItem>
             </li>
         )
     }
