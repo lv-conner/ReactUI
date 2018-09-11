@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../style/Common.css";
 
-class SubItem extends Component{
+class SubMenuItem extends Component{
     constructor(props){
         super(props);
     }
@@ -9,14 +9,18 @@ class SubItem extends Component{
         if(this.props.subItems.length === 0){
             return null;
         }
+        var cn = null;
+        if(!this.props.display){
+            cn = "sub-menu";
+        }
         return(
-            <ul className="sub-menu">
+            <ul className={cn}>
                 {this.props.subItems.map((item,index)=>{
-                    return<li key={item.id}><a className="sub-item tab-frame" href="javascript:void(0);" url={item.url} id={item.id}>系统设置</a></li>
+                    return<li key={item.id}><a className="sub-item tab-frame" href="javascript:void(0);" url={item.url} id={item.id}>{item.id}</a></li>
                 })}
             </ul>
         )
     }
 }
 
-export default SubItem;
+export default SubMenuItem;

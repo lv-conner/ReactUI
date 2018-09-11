@@ -4,7 +4,7 @@ var data = [
         subItems:[
             {"id":"bing","url":"https://www.bing.com"},
             {"id":"baidu","url":"https://www.baidu.com"}
-        ]
+        ],
     }
 ]
 
