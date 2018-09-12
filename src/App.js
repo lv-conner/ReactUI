@@ -4,29 +4,7 @@ import './style/App.css';
 import Nav from './components/Nav';
 import "./style/Common.css";
 import Page from "./components/Page";
-import data,{Source} from "./components/Source"
-
- var  tabs = [{
-   Name:"bing",
-   NavId:"bing",
-   Active:true
- },{
-   Name:"baidu",
-   NavId:"baidu",
-   Active:false
- }]
- var Iframes = [
-    {
-      "NavId":"bing",
-      "Url":"https://www.bing.com",
-      "Active":true
-    },{
-      "NavId":"baidu",
-      "Url":"https://www.baidu.com",
-      "Active":false
-    }
- ]
-
+import {Source} from "./components/Source"
 class App extends Component {
   render() {
     return (

@@ -6,8 +6,8 @@ class Page extends Component {
     constructor(props) {
         super(props);
         this.state ={
-            "tabs":this.props.data.tabs,
-            "iframes":this.props.data.iframes
+            "tabs":this.props.data.tabs || [],
+            "iframes":this.props.data.iframes || []
         }
     }
     tabClick = (e)=>{
