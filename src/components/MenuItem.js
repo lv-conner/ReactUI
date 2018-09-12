@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../style/Common.css";
-import SubMuneItem from "./SubMenuItem";
+import SubMenu from "./SubMenu";
 
 class MenuItem extends Component{
     constructor(props){
@@ -19,7 +19,7 @@ class MenuItem extends Component{
         return(
             <li>
                 <a href={"#" + this.props.Item.text} onClick={this.ChangeState.bind(this)} className="nav-menu-item">{this.props.Item.text}<i className="fa fa-angle-right right-directive" ></i></a>
-                <SubMuneItem subItems={this.props.Item.subItems} display={this.state.display} addTab = {this.props.addTab} ></SubMuneItem>
+                <SubMenu subItems={this.props.Item.subItems} display={this.state.display} addTab = {this.props.addTab} ></SubMenu>
             </li>
         )
     }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../style/Common.css";
 
-class SubMenuItem extends Component{
+class SubMenu extends Component{
     constructor(props) {
         super(props);
     }
@@ -10,7 +10,7 @@ class SubMenuItem extends Component{
             return null;
         }
         return(
-            <ul className={this.props.display?"sub-menu-active":"sub-menu"}>
+            <ul className={this.props.display ? "sub-menu-active" : "sub-menu"}>
                 {this.props.subItems.map((item,index)=>{
                     return<li key={item.id}><a className="sub-item tab-frame" href="javascript:void(0);" onClick={(e) => this.props.addTab(item,e)}>{item.text}</a></li>
                 })}
@@ -19,4 +19,4 @@ class SubMenuItem extends Component{
     }
 }
 
-export default SubMenuItem;
+export default SubMenu;
