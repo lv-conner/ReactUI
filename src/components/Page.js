@@ -3,13 +3,14 @@ import "../style/Common.css";
 import MenuItem from "./MenuItem";
 import IFrameContainer from "./IFrameContainer";
 import TabContainer from "./TabContainer";
-
+import Menu from "./Menu";
 class Page extends Component {
     constructor(props) {
         super(props);
         this.state = {
             "tabs": this.props.data.tabs || [],
-            "iframes": this.props.data.iframes || []
+            "iframes": this.props.data.iframes || [],
+            "menuItems":this.props.data.menuItems || []
         };
     }
     activeTab(tabId) {
@@ -26,10 +27,32 @@ class Page extends Component {
             if (p.id === tabId) {
                 p.active = true;
             }
-        })
+        });
+        var menus = this.state.menuItems;
+        this.activeMenu(menus,tabId);
         this.setState({
             "tabs": tabs,
-            "iframes": iframes
+            "iframes": iframes,
+            "menuItems":menus
+        });
+    }
+    activeMenu(menus,id){
+        menus.forEach(p=>{
+            p.subItems.forEach(t=>{
+                t.active = false;
+                if(t.id == id){
+                    t.active = true;
+                }
+            })
+        });
+    }
+    disactiveMenu(menus,id){
+        menus.forEach(p=>{
+            p.subItems.forEach(t=>{
+                if(t.id == id){
+                    t.active = false;
+                }
+            })
         });
     }
     addTab = tab => {
@@ -58,9 +81,12 @@ class Page extends Component {
                 "id": tab.id,
                 "active": true
             });
+            var menus = this.state.menuItems;
+            this.activeMenu(menus,tab.id);
             this.setState({
                 "tabs": tabs,
-                "iframes": iframes
+                "iframes": iframes,
+                "menuItems":menus
             });
         }
 
@@ -68,24 +94,24 @@ class Page extends Component {
     removeTab = tab => {
         var rstTabs = this.state.tabs.filter(item => item !== tab);
         var iframes = this.state.iframes.filter(item => item.id !== tab.id);
+        var menus = this.state.menuItems;
+        this.disactiveMenu(menus,tab.id)
         if (rstTabs.length > 0) {
             rstTabs[rstTabs.length - 1].active = true;
             iframes[iframes.length - 1].active = true;
+            this.activeMenu(menus,rstTabs[rstTabs.length -1 ].id);
         }
         this.setState({
             "tabs": rstTabs,
-            "iframes": iframes
+            "iframes": iframes,
+            "menuItems":menus
         });
     }
     render() {
         return (
             <div className="row page">
                 <div className="col-1 left-panel left-panel-default">
-                    <ul className="nav-menu">
-                        {this.props.data.menuItems.map((item, index) => {
-                            return <MenuItem key={item.text} Item={item} addTab = {this.addTab.bind(this)}></MenuItem>
-                        })}
-                    </ul>
+                    <Menu menus={this.state.menuItems} addTab={this.addTab.bind(this)}></Menu>
                 </div>
                 <div className="col-11 tab-content">
                     <TabContainer tabs={this.state.tabs} onClick={this.activeTab.bind(this)} onDoubleClick={this.removeTab.bind(this)} ></TabContainer>

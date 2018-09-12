@@ -12,7 +12,7 @@ class SubMenu extends Component{
         return(
             <ul className={this.props.display ? "sub-menu-active" : "sub-menu"}>
                 {this.props.subItems.map((item,index)=>{
-                    return<li key={item.id}><a className="sub-item tab-frame" href="javascript:void(0);" onClick={(e) => this.props.addTab(item,e)}>{item.text}</a></li>
+                    return<li key={item.id}><a className={item.active?"sub-item sub-item-active tab-frame":"sub-item tab-frame"} href="javascript:void(0);" onClick={(e) => this.props.addTab(item,e)}>{item.text}</a></li>
                 })}
             </ul>
         )

@@ -4,16 +4,19 @@ var Source = {
         subItems: [{
                 "id": "bing",
                 "url": "https://www.bing.com",
-                "text": "必应"
+                "text": "必应",
+                "active":false
             },
             {
                 "id": "baidu",
                 "url": "https://www.baidu.com",
-                "text": "百度"
+                "text": "百度",
+                "active":false
             }, {
                 "id": "local",
                 "url": "/home/index",
-                "text": "主页"
+                "text": "主页",
+                "active":false
             }
         ],
     },{
@@ -22,7 +25,8 @@ var Source = {
             {
                 "id": "cnblog",
                 "url": "https://www.cnblogs.com/",
-                "text": "博客园"
+                "text": "博客园",
+                "active":false
             }
         ]
     }]
