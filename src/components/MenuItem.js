@@ -18,7 +18,7 @@ class MenuItem extends Component{
     render(){
         return(
             <li>
-                <a href={"#" + this.props.Item.text} onClick={this.ChangeState.bind(this)} className="nav-menu-item">{this.props.Item.text}<i className="fa fa-angle-right right-directive" ></i></a>
+                <a href={"#" + this.props.Item.text} onClick={this.ChangeState.bind(this)} className="nav-menu-item ripple">{this.props.Item.text}<i className="fa fa-angle-right right-directive" ></i></a>
                 <SubMenu subItems={this.props.Item.subItems} display={this.state.display} addTab = {this.props.addTab} ></SubMenu>
             </li>
         )
