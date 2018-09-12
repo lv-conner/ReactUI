@@ -8,10 +8,31 @@ class Page extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            "tabs": this.props.data.tabs || [],
-            "iframes": this.props.data.iframes || [],
-            "menuItems":this.props.data.menuItems || []
+            "tabs": this.props.tabs || [],
+            "iframes": this.props.iframes || [],
+            "menuItems":this.props.menuItems || []
         };
+    }
+    componentDidMount(){
+        var xhr = new XMLHttpRequest();
+        var that = this;
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState === 4 && xhr.status === 200){
+                var obj = null;
+                try{
+                    obj = JSON.parse(xhr.responseText);
+                }
+                catch(error){
+                    throw "Json string format error";
+                }
+                if(obj.data){
+                    that.setState({menuItems:obj.data});
+                }
+            }
+        };
+        xhr.open("get",this.props.apiUrl);
+        xhr.send(null);
+
     }
     activeTab(tabId) {
         var tabs = this.state.tabs;

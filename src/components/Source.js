@@ -12,21 +12,26 @@ var Source = {
                 "url": "https://www.baidu.com",
                 "text": "百度",
                 "active":false
-            }, {
-                "id": "local",
-                "url": "/home/index",
-                "text": "主页",
-                "active":false
             }
-        ],
+        ]
     },{
-        "text":"博客",
-        "subItems":[
+        text:"主页",
+        subItems:[
             {
-                "id": "cnblog",
-                "url": "https://www.cnblogs.com/",
-                "text": "博客园",
-                "active":false
+                id:"about",
+                url:"/Home/about",
+                text:"关于",
+                active:false
+            }
+        ]
+    },{
+        text:"报表",
+        subItems:[
+            {
+                id:"report",
+                url:"/report/index",
+                text:'报表',
+                active:false
             }
         ]
     }]
