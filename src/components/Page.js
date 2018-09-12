@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "../style/Common.css";
 import MenuItem from "./MenuItem";
+import IFrameContainer from "./IFrameContainer";
+import TabContainer from "./TabContainer";
 
 class Page extends Component {
     constructor(props) {
@@ -86,16 +88,8 @@ class Page extends Component {
                     </ul>
                 </div>
                 <div className="col-11 tab-content">
-                    <div className="tab-line">
-                        {this.state.tabs.map((p,index)=>{
-                            return <a key={index}  className={p.active ? "tab tab-active" : "tab"} href={"#" + p.text} onClick={this.activeTab.bind(this,p.id)} onDoubleClick={this.removeTab.bind(this,p)}>{p.text}</a>
-                        })}
-                    </div>
-                    <div className="iframe-container">
-                        {this.state.iframes.map((p,index)=>{
-                            return <iframe key={p.url} title={p.url} src={p.url} className={p.active ? "active-iframe" : "hide-iframe"} height="95%" width="100%" frameBorder="no" border="0" marginWidth="0" marginHeight="0" allowtransparency="yes" ></iframe>
-                        })}
-                    </div>
+                    <TabContainer tabs={this.state.tabs} onClick={this.activeTab.bind(this)} onDoubleClick={this.removeTab.bind(this)} ></TabContainer>
+                    <IFrameContainer iframes={this.state.iframes}></IFrameContainer>
                 </div>
             </div>
         );
