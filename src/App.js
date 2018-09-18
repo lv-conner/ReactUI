@@ -4,7 +4,7 @@ import Nav from './components/Nav';
 import "./style/Common.css";
 import Page from "./components/Page";
 import {Source} from "./components/Source"
-document.apiUrl = "http://127.0.0.1:13130/";
+//document.apiUrl = "http://127.0.0.1:13130/";
 class App extends Component {
   render() {
     return (
